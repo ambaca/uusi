@@ -14,7 +14,10 @@ body
 <body>
 
 Pääkone nopeus <span id="output" style="background-color:white">XXX</span><br>
-<input id="input" type="range" min="150" max="600" step="1" oninput="showVal()" onchange="showVal()" />
+<input id="input" type="range" min="150" max="600" step="1" oninput="showVal()" onchange="showVal()" /><br>
+<br>
+Rullan halkaisija mm<input id="rullanhalkaisija" type="text" /> hylsyn halkaisija mm<input id="hylsynhalkaisija" type="text" /> paksuus mm<input id="paksuus" type="text" /><br>
+<input type="button" value="Click me" onclick="msg()" />
 
 <script>
 window.onload = showVal();
@@ -22,6 +25,18 @@ window.onload = showVal();
 function showVal() {
     document.getElementById('output').innerHTML = document.getElementById('input').value;
 }
+function msg() {
+
+	var rulla = document.getElementById('rullanhalkaisija').value;
+	var hylsy = document.getElementById('hylsynhalkaisija').value;
+	var paksuus = document.getElementById('paksuus').value;
+
+	var x = Math.PI*((Math.pow(rulla, 2)/4)-(Math.pow(hylsy, 2)/4))/paksuus;
+	x /= 1000.0;
+    alert("Rullan pituus " + x.toFixed(2) + "m");
+}
+
+
 </script>
 </body>
 </html>
